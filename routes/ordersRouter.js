@@ -26,9 +26,24 @@ router.get("/:id",
 
 router.post("/",
   async(req, res)=>{
-  const body = req.body;
-  const newOrder = await service.create(body);
-  res.status(201).json(newOrder)
+  const {user, products} = req.body;
+  try {
+    const newOrder = await service.create({
+      userId: user.id});
+    res.json(newOrder)
+
+    for (const product of products) {
+      await service.addItem({
+        orderId: newOrder.id,
+        productId: product.productId,
+        amount: product.amount
+      });
+    }
+
+    res.status(200).json({ message: 'Order created successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to create order' });
+  }
 });
 
 router.post("/add-item",

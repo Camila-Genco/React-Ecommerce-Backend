@@ -35,7 +35,7 @@ const OrderProductSchema = {
     field: "product_id",
     allowNull: false,
     type: DataTypes.INTEGER,
-    unique: true,
+    unique: false,
     references: {
       model: "products",
       key: "id"
