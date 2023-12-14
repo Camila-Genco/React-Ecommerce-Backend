@@ -3,12 +3,12 @@ function logErrors (err, req, res, next){
   next(err);
 }
 
-function errorHandler (err, req, res){
+/*function errorHandler (err, req, res){
   res.status(500).json({
     message: err.message,
     stack: err.stack
   })
-}
+}*/
 
 function boomErrorHandler (err, req, res, next){
   if(err.isBoom){
@@ -20,4 +20,4 @@ function boomErrorHandler (err, req, res, next){
 }
 
 
-module.exports = {logErrors, errorHandler, boomErrorHandler}
+module.exports = {logErrors, boomErrorHandler}

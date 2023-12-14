@@ -1,16 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const routerApi = require("./routes");
+const cookieParser = require("cookie-parser");
 //const {checkApiKey} = require("./middlewares/authHandler")
 
-const {logErrors, errorHandler, boomErrorHandler} = require("./middlewares/errorHandler")
+const {logErrors, boomErrorHandler} = require("./middlewares/errorHandler")
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 app.use(express.json());
 
-const whitelist = ["http://localhost:3000"];
+const whitelist = ["http://localhost:4000", "http://localhost:3000"];
 const options = {
   origin: (origin, callback) =>{
     if(whitelist.includes(origin) !==1){
@@ -37,7 +38,7 @@ routerApi(app);
 
 app.use(logErrors);
 app.use(boomErrorHandler);
-app.use(errorHandler);
+app.use(cookieParser());
 
 app.listen(port, ()=>{
   console.log("Puerto: " + port);

@@ -1,15 +1,20 @@
 const boom = require("@hapi/boom");
+const jwt = require("jsonwebtoken");
 
 const {config} = require("./../config/config");
 
-function checkApiKey(req, res, next){
-  const apiKey = req.headers["api"];
-  if(apiKey === config.apiKey){
-    next();
-  }else{
-    next(boom.unauthorized());
-  }
+const verifyToken = (req, res, next)=>{
+    const token = req.cookies.accesstoken
+    if(!token){
+        throw boom.unauthorized()
+    }
+    jwt.verify(token, config.jwtSecret, (err, user)=>{
+        if(err){
+            return res.status(401).json({success:false, message:"Token is invalid"})
+        }
+        req.user = user
+        next()
+    })
 }
 
-
-module.exports = {checkApiKey}
+module.exports = {verifyToken}
