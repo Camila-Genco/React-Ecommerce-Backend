@@ -70,8 +70,19 @@ For the frontend code and documentation, please refer to the [E-Commerce Fronten
 - **Database (PosgreSQL)**: Stores product information, user data, and orders details.
 - **Containerization (Docker):** The application can be run in Docker containers for consistency across different environments.
 
-### Project Structure
-///
+### Project Structure Overview
+- `db/models:` Data models and schemas for the database.
+- `db/config:` Database connection configuration.
+- `db/migrations:` Migration files storage.
+- `libs/sequelize:` Sequelize instance initialization.
+- `routes:` Routes for different API endpoints.
+- `controllers:` HTTP request-response management.
+- `services:` Business logic of the application.
+- `middlewares:` Custom middleware functions to be used in routes. This is where authentication, validation and error logic is handled.
+- `schemas:` Schemas for input validation.
+- `config:` Configuration files for the application, including environment variables.
+- `index.js:` Entry point of the application. This file includes server setup, middleware initialization, and route mounting.
+- `.sequelizerc:` Sequelize's custom paths and settings.
   
 ### Dependencies
 - [Express](https://www.npmjs.com/package/express)
