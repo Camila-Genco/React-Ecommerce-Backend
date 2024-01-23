@@ -18,7 +18,51 @@ For the frontend code and documentation, please refer to the [E-Commerce Fronten
 - Seamless integration with the frontend for a cohesive user experience.
 
 ## Endpoints
-///
+### Products
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| GET | /api/v1/products | To retrieve all products |
+| GET | /api/v1/products/:id | To retrieve details of a single product |
+| POST | /api/v1/products | To create a new product |
+| PATCH | /api/v1/products/:id | To edit the details of a single product |
+| DELETE | /api/v1/products/:id | To delete a single product |
+
+### Categories
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| GET | /api/v1/categories | To retrieve all categories |
+| GET | /api/v1/categories/:id | To retrieve details of a single category |
+| POST | /api/v1/categories | To create a new category |
+| PATCH | /api/v1/categories/:id | To edit the details of a single category |
+| DELETE | /api/v1/categories/:id | To delete a single category |
+
+### Users
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| GET | /api/v1/users | To retrieve all users |
+| GET | /api/v1/users/:id | To retrieve details of a single user |
+| POST | /api/v1/users | To sign up a new user account |
+| PATCH | /api/v1/users/:id | To edit the details of a single user |
+| DELETE | /api/v1/users/:id | To delete a single user |
+
+### Orders
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| GET | /api/v1/orders | To retrieve all orders |
+| GET | /api/v1/orders/:id | To retrieve details of a single order |
+| POST | /api/v1/orders | To create a new order and add items to it |
+| PATCH | /api/v1/orders/:id | To edit the details of a single order |
+| DELETE | /api/v1/orders/:id | To delete a single order |
+
+### Auth
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| POST | /api/v1/auth/login | To login an existing user account |
+
+### Profile
+| HTTP Verbs | Endpoints | Action |
+| --- | --- | --- |
+| GET | /api/v1/profile/my-orders | Get orders by logged user |
 
   ### Project Overview
 - **Backend (Node.js & Express):** Handles data retrieval from PostgreSQL and serves API endpoints.
