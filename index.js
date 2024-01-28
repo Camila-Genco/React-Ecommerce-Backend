@@ -40,6 +40,9 @@ app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(cookieParser());
 
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Credentials', 'true')})
+
 app.listen(port, ()=>{
   console.log("Puerto: " + port);
 })

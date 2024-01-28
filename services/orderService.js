@@ -42,14 +42,9 @@ class OrderService {
     return order;
   };
 
-  async update(id, data){
-    const order = await this.findOne(id);
-    const rta = await order.update(data);
-    return rta;
-  };
-
   async delete(id){
     const order = await this.findOne(id);
+    await models.OrderProduct.destroy({ where: { orderId: id } });
     await order.destroy();
     return {id};
   };

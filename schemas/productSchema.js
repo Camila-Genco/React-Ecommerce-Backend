@@ -1,39 +1,36 @@
 const Joi = require("joi");
 
-const id = Joi.string();
-const name = Joi.string().min(3);
-const img = Joi.string();
-const price = Joi.number().integer().min(1);
-const description = Joi.string();
-const rating = Joi.number().integer();
-const quantity = Joi.number().integer().min(1);
-const categoryId = Joi.number();
-
-const createProductSchema = Joi.object({
-  name: name.required(),
-  price: price.required(),
-  img: img.required(),
-  description: description.required(),
-  quantity: quantity,
-  rating: rating.required(),
-  categoryId: categoryId.required(),
-})
-
-const updateProductSchema = Joi.object({
-  name: name,
-  price: price,
-  img: img,
-  description: description,
-  quantity: quantity,
-  rating: rating,
-  categoryId: categoryId
-})
+const id = Joi.number().integer();
+const name = Joi.string().min(3).max(30);
+const img = Joi.string().uri();
+const price = Joi.number().integer();
+const description = Joi.string().min(10);
+const rating = Joi.number().integer().max(5);
+const quantity = Joi.number().integer();
+const categoryId = Joi.number().integer();
 
 const getProductSchema = Joi.object({
   id: id.required()
 })
 
-const deleteProductSchema = Joi.object({
-  id: id.required()
+const createProductSchema = Joi.object({
+  name: name.required(),
+  img: img.required(),
+  price: price.required(),
+  description: description.required(),
+  rating: rating.required(),
+  quantity: quantity,
+  categoryId: categoryId.required(),
 })
-module.exports = {createProductSchema, updateProductSchema, getProductSchema, deleteProductSchema}
+
+const updateProductSchema = Joi.object({
+  name: name,
+  img: img,
+  price: price,
+  description: description,
+  rating: rating,
+  quantity: quantity,
+  categoryId: categoryId
+})
+
+module.exports = {getProductSchema, createProductSchema, updateProductSchema}
